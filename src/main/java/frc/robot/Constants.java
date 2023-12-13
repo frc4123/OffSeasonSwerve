@@ -30,6 +30,21 @@ public final class Constants {
     public static final int Back_Left_Turn = 9;
     // turn motors - order - start top left in clockwise rotation
 
+    public static final boolean Front_Left_Drive_Encoder_Reversed = true;
+    public static final boolean Back_Left_Drive_Encoder_Reversed = true;
+    public static final boolean Front_Right_Drive_Encoder_Reversed = false;
+    public static final boolean Back_Right_Drive_Encoder_Reversed = false;
+    // determines if drive motors are reversed
+
+    public static final boolean Front_Left_Turning_Encoder_Reversed = true;
+    public static final boolean Back_Left_Turning_Encoder_Reversed = true;
+    public static final boolean Front_Right_Turning_Encoder_Reversed = true;
+    public static final boolean Back_Right_Turning_Encoder_Reversed = true;
+    // determintes if turn motors are reversed
+
+    
+
+
   }
 
   public static final class ModuleConstants {
@@ -43,6 +58,7 @@ public final class Constants {
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
     public static final double kPTurning = 0.5;
+    public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
     // the above will have to be changed after gear ratio measurements, wheel measurements, and pid tuning
     
   }
