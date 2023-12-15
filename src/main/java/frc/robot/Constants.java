@@ -1,49 +1,70 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 
-/**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
- * globally (i.e. public static). Do not put anything functional in this class.
- *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
- */
 public final class Constants {
 
   public static final class DrivingConstants{
 
     public static final int Front_Left_Drive = 2;
     public static final int Front_Right_Drive = 3;
-    public static final int Back_Right_Drive = 4;
-    public static final int Back_Left_Drive = 5;
+    public static final int Back_Left_Drive = 4;
+    public static final int Back_Right_Drive = 5;
+
     // drive motors - order -  start top left in clockwise rotation
     
     public static final int Front_Left_Turn = 6;
     public static final int Front_Right_Turn = 7;
-    public static final int Back_Right_Turn = 8;
-    public static final int Back_Left_Turn = 9;
+    public static final int Back_Left_Turn = 8;
+    public static final int Back_Right_Turn = 9;
     // turn motors - order - start top left in clockwise rotation
 
     public static final boolean Front_Left_Drive_Encoder_Reversed = true;
-    public static final boolean Back_Left_Drive_Encoder_Reversed = true;
     public static final boolean Front_Right_Drive_Encoder_Reversed = false;
+    public static final boolean Back_Left_Drive_Encoder_Reversed = true;
     public static final boolean Back_Right_Drive_Encoder_Reversed = false;
     // determines if drive motors are reversed
 
     public static final boolean Front_Left_Turning_Encoder_Reversed = true;
-    public static final boolean Back_Left_Turning_Encoder_Reversed = true;
     public static final boolean Front_Right_Turning_Encoder_Reversed = true;
+    public static final boolean Back_Left_Turning_Encoder_Reversed = true;
     public static final boolean Back_Right_Turning_Encoder_Reversed = true;
     // determintes if turn motors are reversed
 
-    
+    public static final int Front_Left_Drive_Absolute_Encoder_Port = 0;
+    public static final int Front_Right_Drive_Absolute_Encoder_Port = 1;
+    public static final int Back_Left_Drive_Absolute_Encoder_Port = 2;
+    public static final int Back_Right_Drive_Absolute_Encoder_Port = 3;
+    // assigns absolute encoders
 
+    public static final double Front_Left_Drive_Absolute_Encoder_Offset_Rad = -0.254;
+    public static final double Front_Right_Drive_Absolute_Encoder_Offset_Rad = -1.816;
+    public static final double Back_Left_Drive_Absolute_Encoder_Offset_Rad = -1.252;
+    public static final double Back_Right_Drive_Absolute_Encoder_Offset_Rad = -4.811;
+    // encoder offset in radians
+
+    public static final boolean Front_Left_Drive_Absolute_Encoder_Reversed = false;
+    public static final boolean Front_Right_Drive_Absolute_Encoder_Reversed = false;
+    public static final boolean Back_Left_Drive_Absolute_Encoder_Reversed = false;
+    public static final boolean Back_Right_Drive_Absolute_Encoder_Reversed = false;
+    // drive encoders not reversed
+
+    public static final double kTrackWidth = Units.inchesToMeters(21);
+    // Distance between right and left wheels
+    public static final double kWheelBase = Units.inchesToMeters(25.5);
+    // Distance between front and back wheels
+
+    public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
+            new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
+            new Translation2d(kWheelBase / 2, kTrackWidth / 2),
+            new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
+            new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
+  }
+  public static final class InputConstants {
+    public static final int kDriverControllerPort = 0;
+    public static final double kDeadband = 0.05;
 
   }
 
@@ -68,7 +89,7 @@ public final class Constants {
   }
 
   public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
+    
   }
 
 }

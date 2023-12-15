@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.RobotController;
@@ -81,6 +82,10 @@ public class SwerveModule {
     }
     //methods for obtaining encoder values
 
+    public SwerveModulePosition getPosition() {
+        return new SwerveModulePosition(getDrivePosition(), new Rotation2d(getTurningPosition()));
+    }
+
 
     public double getAbsoluteEncoderRad() {
         double angle = absoluteEncoder.getVoltage() / RobotController.getVoltage5V();
@@ -99,6 +104,7 @@ public class SwerveModule {
     public SwerveModuleState getState() {
         return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getTurningPosition()));
     }
+    // returns the velocity and turning position of swerve module
 
     public void setDesiredState(SwerveModuleState state) {
 
@@ -106,11 +112,13 @@ public class SwerveModule {
             stop();
             return;
         }
+        // prevents wheels from zeroing upon no input
 
         state = SwerveModuleState.optimize(state, getState().angle);
         driveMotor.set(state.speedMetersPerSecond  / ModuleConstants.kPhysicalMaxSpeedMetersPerSecond);
         turnMotor.set(turnPIDController.calculate(getTurningPosition(), state.angle.getRadians()));
         SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
+        // applies speeds and turns to swerve module
     }
 
     public void stop() {
