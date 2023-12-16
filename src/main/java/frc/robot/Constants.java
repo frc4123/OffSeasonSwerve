@@ -73,7 +73,9 @@ public final class Constants {
   }
 
   public static final class InputConstants {
+
     public static final int kDriverControllerPort = 0;
+    public static final boolean fieldOrientation = true;
     public static final double kDeadband = 0.05;
 
   }
