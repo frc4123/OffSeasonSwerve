@@ -59,7 +59,7 @@ public class SwerveModule {
         // converts encoders to work with radians
 
         turnPIDController = new PIDController(ModuleConstants.kPTurning,0,0);
-        turnPIDController.enableContinuousInput(Math.PI, Math.PI);
+        turnPIDController.enableContinuousInput(-Math.PI, Math.PI);
         // PID controller -  continuous readings
 
         resetEncoders();
@@ -115,7 +115,7 @@ public class SwerveModule {
         // prevents wheels from zeroing upon no input
 
         state = SwerveModuleState.optimize(state, getState().angle);
-        driveMotor.set(state.speedMetersPerSecond  / ModuleConstants.kPhysicalMaxSpeedMetersPerSecond);
+        driveMotor.set(state.speedMetersPerSecond / ModuleConstants.kPhysicalMaxSpeedMetersPerSecond);
         turnMotor.set(turnPIDController.calculate(getTurningPosition(), state.angle.getRadians()));
         SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
         // applies speeds and turns to swerve module

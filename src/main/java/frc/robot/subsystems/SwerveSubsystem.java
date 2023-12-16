@@ -76,6 +76,7 @@ public class SwerveSubsystem extends SubsystemBase{
                 } catch (Exception e) {}
             }).start();
         }
+        // creates new thread to reset gyro
 
     public void zeroHeading() {
         gyro.reset();
@@ -84,10 +85,12 @@ public class SwerveSubsystem extends SubsystemBase{
     public double getHeading() {
         return Math.IEEEremainder(gyro.getAngle(), 360);
     }
+    // keeps degree within 360 degree measurements
 
     public Rotation2d getRotation2d() {
         return Rotation2d.fromDegrees(getHeading());
     }
+    // wpilib 
 
     @Override
     public void periodic() {
@@ -108,4 +111,5 @@ public class SwerveSubsystem extends SubsystemBase{
         backLeft.setDesiredState(desiredStates[2]);
         backRight.setDesiredState(desiredStates[3]);
     }
+    //sets wheel speeds at same speed (desaturate)
 }

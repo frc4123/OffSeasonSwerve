@@ -18,9 +18,6 @@ public class RobotContainer {
 
   private final CommandXboxController m_driverController = new CommandXboxController(InputConstants.kDriverControllerPort);
 
-  
-
-
   public RobotContainer() {
 
     swerveSubsystem.setDefaultCommand(new Swerve(
@@ -32,12 +29,10 @@ public class RobotContainer {
     configureBindings();
   }
 
-
   private void configureBindings() {
   }
 
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
     return null;
   }
 }
