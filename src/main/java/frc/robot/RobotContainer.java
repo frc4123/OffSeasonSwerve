@@ -23,7 +23,7 @@ public class RobotContainer {
     swerveSubsystem.setDefaultCommand(new Swerve(
                 swerveSubsystem,
                 () -> -m_driverController.getLeftY() * DrivingConstants.kTeleDriveMaxAccelerationUnitsPerSecond,
-                () -> m_driverController.getLeftX() * DrivingConstants.kTeleDriveMaxAccelerationUnitsPerSecond,
+                () -> m_driverController.getLeftX()  * DrivingConstants.kTeleDriveMaxAccelerationUnitsPerSecond,
                 () -> m_driverController.getRightX() *  DrivingConstants.kTeleDriveMaxAngularAccelerationUnitsPerSecond
                 ));
     configureBindings();
