@@ -8,8 +8,6 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
-import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
-import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.SPI;
@@ -56,16 +54,6 @@ public class SwerveSubsystem extends SubsystemBase{
             DrivingConstants.Back_Right_Drive_Absolute_Encoder_Reversed);
 
     private final AHRS gyro = new AHRS(SPI.Port.kMXP);
-
-    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DrivingConstants.kDriveKinematics,
-        new Rotation2d(0), 
-        new SwerveModulePosition[]{
-            frontLeft.getPosition(),
-            frontRight.getPosition(),
-            backLeft.getPosition(),
-            backRight.getPosition()
-        }
-        );
 
         public SwerveSubsystem() {
             new Thread(() -> {
