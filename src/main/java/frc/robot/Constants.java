@@ -98,8 +98,7 @@ public final class Constants {
 }
 
   public static final class ModuleConstants {
-
-    public static final int kEncoderCPR = 1024;
+    
     public static final double kWheelDiameterMeters = Units.inchesToMeters(4); //wheel diameter
     public static final double kDriveMotorGearRatio = 1 / 5.8462; // motor gear ratio
     public static final double TurningMotorGearRatio = 1 / 18.0; // turning gear ratio
